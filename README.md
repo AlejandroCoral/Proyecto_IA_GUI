@@ -2,39 +2,20 @@
 
 Proyecto desarrollado para la materia **Introducción a la Inteligencia Artificial**.
 
-La aplicación implementa dos algoritmos de aprendizaje supervisado programados manualmente:
+Implementa **manual y matemáticamente** (sin librerías de ML como scikit-learn):
+- Regresión Lineal Simple (Mínimos Cuadrados + MSE)
+- K-Nearest Neighbors (Distancia Euclidiana + Votación)
 
-- Regresión Lineal Simple
-- K-Nearest Neighbors (KNN)
-
-El objetivo del proyecto es demostrar el funcionamiento matemático de estos algoritmos sin utilizar librerías que resuelvan el modelo automáticamente.
-
-## Características
-
-- Implementación manual de los algoritmos
-- Interfaz gráfica para interactuar con los datos
-- Carga de archivos CSV
-- Visualización de resultados
-- Generación de gráficos
-
-## Tecnologías utilizadas
-
-- Python
-- Tkinter
-- Matplotlib
-- Pandas
-- Numpy
-
-## Ejecución
-
+## Ejecutar
 Instalar dependencias:
-
 pip install -r requirements.txt
 
-Ejecutar el programa:
-
+Ejecutar:
 python main.py
 
-## Autor
+## Formato CSV
+### Regresión
+X,Y
 
-Alejandro Coral  
+### KNN
+x1,x2,label
