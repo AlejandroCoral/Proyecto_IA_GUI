@@ -125,14 +125,39 @@ def safe_float(s: str, name: str):
 class IAApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Proyecto Final IA con GUI — Regresión Lineal + KNN (sin sklearn)")
+        style = ttk.Style(self)
+        style.theme_use("vista")
+        style.configure("TNotebook.Tab", padding=[12,6])
+        self.configure(bg="#eef9f2")
+        style.configure("Hint.TLabel", font=("Segoe UI", 10))
+      
+        self.title("Mini laboratorio de IA – Regresión Lineal y KNN")
         self.geometry("1200x720")
+
+        style.configure(
+            "Title.TLabel",
+            font=("Segoe UI", 12, "bold"),
+            foreground="#2c3e50"
+        )
+
+        style.configure(
+            "Accent.TButton",
+            font=("Segoe UI", 10, "bold"),
+            padding=8
+        )
+
+        welcome = ttk.Label(
+            self,
+            text="Mini laboratorio para experimentar con algoritmos básicos de Inteligencia Artificial",
+            font=("Segoe UI", 10)
+        )
+        welcome.pack(pady=5)
 
         self.notebook = ttk.Notebook(self)
         self.notebook.pack(fill="both", expand=True)
 
-        self.reg_frame = ttk.Frame(self.notebook)
-        self.knn_frame = ttk.Frame(self.notebook)
+        self.reg_frame = ttk.Frame(self.notebook, padding=10)
+        self.knn_frame = ttk.Frame(self.notebook, padding=10)
 
         self.notebook.add(self.reg_frame, text="Regresión Lineal")
         self.notebook.add(self.knn_frame, text="KNN Clasificación")
@@ -153,8 +178,7 @@ class IAApp(tk.Tk):
         right = ttk.Frame(self.reg_frame)
         right.pack(side="right", fill="both", expand=True, padx=10, pady=10)
 
-        ttk.Label(left, text="Módulo de carga (Regresión)", font=("Segoe UI", 11, "bold")).pack(anchor="w")
-
+        ttk.Label(left, text="Módulo de carga (Regresión)", style="Title.TLabel").pack(anchor="w")
         btn_row = ttk.Frame(left)
         btn_row.pack(fill="x", pady=6)
         ttk.Button(btn_row, text="Cargar CSV", command=self.load_regression_csv).pack(side="left", padx=5)
@@ -179,8 +203,7 @@ class IAApp(tk.Tk):
         self.reg_result_label.pack(anchor="w", pady=10)
 
         ttk.Separator(left).pack(fill="x", pady=10)
-        ttk.Button(left, text="Entrenar / Calcular modelo", command=self.train_regression).pack(fill="x", pady=4)
-
+        ttk.Button(left, text="Entrenar / Calcular modelo", command=self.train_regression, style="Accent.TButton").pack(fill="x", pady=6)
         ttk.Label(right, text="Datos cargados", font=("Segoe UI", 11, "bold")).pack(anchor="w")
         self.reg_tree = ttk.Treeview(right, height=10)
         self.reg_tree.pack(fill="x", pady=6)
